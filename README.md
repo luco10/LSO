@@ -1,7 +1,7 @@
 # LSO
 
 #### Index
-1. [Traccia](https://pages.github.com/)
+1. [Traccia](https://github.com/luco10/LSO/blob/master/README.md#1-traccia)
 2. Server
 3. Client
 
