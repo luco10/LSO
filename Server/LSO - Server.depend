@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1500199573 source:/home/luca/Scrivania/LSO/LSO - Server/main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<pthread.h>
+
