@@ -1,7 +1,7 @@
 # LSO
 
 #### Index
-1. Traccia
+1. [Traccia](https://pages.github.com/)
 2. Server
 3. Client
 
