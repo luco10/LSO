@@ -6,18 +6,18 @@
 3. Client
 
 
-#### Traccia
+#### 1. Traccia
 > Prova traccia.
 
 
-#### Server
+#### 2. Server
 - 0.0.1
   - Inserito progetto iniziale.
 - 0.0.2
   - Inserito script per compilazione ed esecuzione veloce.
 
 
-#### Client
+#### 3. Client
 - 0.0.1
   - Inserito progetto iniziale.
 - 0.0.2
