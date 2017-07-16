@@ -1,23 +1,23 @@
 # LSO
 
-#### 0. Index
-- Traccia
-- Server
-- Client
+#### Index
+1. Traccia
+2. Server
+3. Client
 
 
-#### 1. Traccia
+#### Traccia
 > Prova traccia.
 
 
-#### 2. Server
+#### Server
 - 0.0.1
   - Inserito progetto iniziale.
 - 0.0.2
   - Inserito script per compilazione ed esecuzione veloce.
 
 
-#### 2. Client
+#### Client
 - 0.0.1
   - Inserito progetto iniziale.
 - 0.0.2
