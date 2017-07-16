@@ -1,0 +1,2 @@
+gcc main.c -pthread -o server
+gdb server
