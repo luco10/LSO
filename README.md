@@ -1,9 +1,9 @@
 # LSO
 
 ### Index
-1. [Traccia](https://github.com/luco10/LSO/blob/master/README.md#1-traccia)
-2. [Server](https://github.com/luco10/LSO/blob/master/README.md#2-server)
-3. [Client](https://github.com/luco10/LSO/blob/master/README.md#3-client)
+1. [Traccia](https://github.com/luco10/LSO/blob/master/README.md#traccia)
+2. [Server](https://github.com/luco10/LSO/blob/master/README.md#server)
+3. [Client](https://github.com/luco10/LSO/blob/master/README.md#client)
 
 
 ### Traccia
