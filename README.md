@@ -21,9 +21,11 @@ l’invio. Su richiesta dell’utente l’applicazione può terminare, nel qual 
 messaggio di terminazione ed attende la terminazione di eventuali download in corso.
 Il server di rendez-vous notifica tutti i peer all’atto della modifica dello stato della rete, i.e., quando
 un peer termina o un nuovo peer si connette al servizio.
-NOTA: Per simulare l’effetto della latenza di rete, le applicazioni trasferiscono i file suddividendoli
+
+> NOTA: Per simulare l’effetto della latenza di rete, le applicazioni trasferiscono i file suddividendoli
 in pacchetti da 100 byte ed inviando pacchetti consecutivi ad intervalli di 1 secondo.
-L'applicazione deve essere scritta utilizzando il linguaggio C. I processi comunicano attraverso
+
+> L'applicazione deve essere scritta utilizzando il linguaggio C. I processi comunicano attraverso
 socket TCP. L'elaborato deve essere corredato da una opportuna documentazione.
 
 #### Descrizione dettagliata:
@@ -33,14 +35,17 @@ riceve dai peer le seguenti richieste:
 
 > • Connessione. Il peer invia l’indirizzo IP ed il numero di porta su cui e’ in ascolto. All’atto
 della richiesta il server invia:
-o Al peer appena connesso la lista degli indirizzi IP e dei numeri di porta degli altri
+
+> o Al peer appena connesso la lista degli indirizzi IP e dei numeri di porta degli altri
 peer registrati
-o Agli altri peer già attivi l’indirizzo IP ed il numero di porta del nuovo peer.
+
+> o Agli altri peer già attivi l’indirizzo IP ed il numero di porta del nuovo peer.
 
 > • Disconnessione. Il peer comunica la prossima disattivazione del servizio. Il server invia a
 tutti i peer attivi l’indirizzo IP ed il numero di porta del peer che ha richiesto la
 disconnessione.
-Ad ogni peer connesso, il server associa un thread che gestisce tutte le comunicazioni con il peer.
+
+> Ad ogni peer connesso, il server associa un thread che gestisce tutte le comunicazioni con il peer.
 
 > ##### Processo peer:
 > Il processo peer riceve su riga di comando:
@@ -59,8 +64,9 @@ Ad ogni peer connesso, il server associa un thread che gestisce tutte le comunic
 attende le connessioni da altri peer. Il server invia gli indirizzi di tutti i peer attivi. La
 comunicazione tra peer e server di rendez-vous è gestita da uno specifico thread.
 Il peer crea un thread per ogni peer attivo nella rete e stabilisce una connessione con il peer.
-Terminata la fase di inizializzazione, il peer legge da standard input i comandi dell’utente. 
-L’utente può inviare al peer uno dei seguenti comandi:
+Terminata la fase di inizializzazione, il peer legge da standard input i comandi dell’utente.
+
+> L’utente può inviare al peer uno dei seguenti comandi:
 
 > • connessioni: Visualizza lo stato di tutti i peer cui e’ connesso, i.e., Indirizzo IP, numero di
 porta e “stato del peer” (attivo/in terminazione)
