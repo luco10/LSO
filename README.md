@@ -30,23 +30,31 @@ socket TCP. L'elaborato deve essere corredato da una opportuna documentazione.
 > ##### Processo di rendez-vous:
 > Il processo server riceve su linea di comando il numero di porta su cui attivare il servizio. Il server
 riceve dai peer le seguenti richieste:
-• Connessione. Il peer invia l’indirizzo IP ed il numero di porta su cui e’ in ascolto. All’atto
+
+> • Connessione. Il peer invia l’indirizzo IP ed il numero di porta su cui e’ in ascolto. All’atto
 della richiesta il server invia:
 o Al peer appena connesso la lista degli indirizzi IP e dei numeri di porta degli altri
 peer registrati
 o Agli altri peer già attivi l’indirizzo IP ed il numero di porta del nuovo peer.
-• Disconnessione. Il peer comunica la prossima disattivazione del servizio. Il server invia a
+
+> • Disconnessione. Il peer comunica la prossima disattivazione del servizio. Il server invia a
 tutti i peer attivi l’indirizzo IP ed il numero di porta del peer che ha richiesto la
 disconnessione.
 Ad ogni peer connesso, il server associa un thread che gestisce tutte le comunicazioni con il peer.
 
 > ##### Processo peer:
 > Il processo peer riceve su riga di comando:
-• L’indirizzo IP del server di rendez-vous
-• Il numero di porta del server di rendez-vous
-• Il numero di porta su cui mettersi in attesa di connessioni da altri peer
-• Il nome della directory in cui sono memorizzati i file da condividere
-• Il nome della directory in cui memorizzare i file scaricati
+
+> • L’indirizzo IP del server di rendez-vous
+
+> • Il numero di porta del server di rendez-vous
+
+> • Il numero di porta su cui mettersi in attesa di connessioni da altri peer
+
+> • Il nome della directory in cui sono memorizzati i file da condividere
+
+> • Il nome della directory in cui memorizzare i file scaricati
+
 Il peer, all’atto dell’avvio, contatta il server di rendez-vous inviando il numero di porta su cui
 attende le connessioni da altri peer. Il server invia gli indirizzi di tutti i peer attivi. La
 comunicazione tra peer e server di rendez-vous è gestita da uno specifico thread.
