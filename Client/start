@@ -1,0 +1,2 @@
+gcc -o client main.c
+./client 143.225.83.32 1050 1060 files download
