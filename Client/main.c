@@ -1,16 +1,21 @@
-/*
-    C ECHO client example using sockets
-*/
+
 #include<stdio.h> //printf
 #include<string.h>    //strlen
 #include<sys/socket.h>    //socket
 #include<arpa/inet.h> //inet_addr
 
-int main(int argc , char *argv[])
+int main(int argc , char **argv)
 {
     int sock;
     struct sockaddr_in server;
     char message[1000] , server_reply[2000];
+
+    /* Controlla il numero dei parametri da linea di comando */
+	if( argc < 6)
+	{
+		write( 1, "\nParametri non inseriti da linea di comando\n", strlen("\nParametri non inseriti da linea di comando\n"));
+		exit(EXIT_FAILURE);
+	}
 
     //Create socket
     sock = socket(AF_INET , SOCK_STREAM , 0);
@@ -22,7 +27,7 @@ int main(int argc , char *argv[])
 
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
     server.sin_family = AF_INET;
-    server.sin_port = htons( 8888 );
+    server.sin_port = htons(atoi(argv[2]));
 
     //Connect to remote server
     if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0)
