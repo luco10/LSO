@@ -55,20 +55,24 @@ Ad ogni peer connesso, il server associa un thread che gestisce tutte le comunic
 
 > • Il nome della directory in cui memorizzare i file scaricati
 
-Il peer, all’atto dell’avvio, contatta il server di rendez-vous inviando il numero di porta su cui
+> Il peer, all’atto dell’avvio, contatta il server di rendez-vous inviando il numero di porta su cui
 attende le connessioni da altri peer. Il server invia gli indirizzi di tutti i peer attivi. La
 comunicazione tra peer e server di rendez-vous è gestita da uno specifico thread.
 Il peer crea un thread per ogni peer attivo nella rete e stabilisce una connessione con il peer.
 Terminata la fase di inizializzazione, il peer legge da standard input i comandi dell’utente. 
 L’utente può inviare al peer uno dei seguenti comandi:
-• connessioni: Visualizza lo stato di tutti i peer cui e’ connesso, i.e., Indirizzo IP, numero di
+
+> • connessioni: Visualizza lo stato di tutti i peer cui e’ connesso, i.e., Indirizzo IP, numero di
 porta e “stato del peer” (attivo/in terminazione)
-• download: Visualizza le statistiche per ogni download in corso (Numero di byte scaricati,
+
+> • download: Visualizza le statistiche per ogni download in corso (Numero di byte scaricati,
 dimensione del file)
-• stop: Indica al volontà di terminare il peer. In questo caso, lo stato del peer diventa “in
+
+> • stop: Indica al volontà di terminare il peer. In questo caso, lo stato del peer diventa “in
 terminazione”. Il peer informa il server di rendez-vous e non accetterà più richieste di
 download. Prima di terminare attende la terminazione di eventuali trasferimenti in corso.
-• Nome di un file. In questo caso, il peer invia ad ogni peer cui è connesso il nome del file.
+
+> • Nome di un file. In questo caso, il peer invia ad ogni peer cui è connesso il nome del file.
 Attende le risposte dei peer e selezione uno dei peer che hanno segnalato la presenza di un
 file con il nome indicato. Viene eseguito il download del file che viene memorizzato nella
 directory opportuna. Il download è eseguito a blocchi di 100 byte inviati ad intervalli di un
