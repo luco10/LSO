@@ -36,10 +36,10 @@ riceve dai peer le seguenti richieste:
 > • Connessione. Il peer invia l’indirizzo IP ed il numero di porta su cui e’ in ascolto. All’atto
 della richiesta il server invia:
 
-> o Al peer appena connesso la lista degli indirizzi IP e dei numeri di porta degli altri
+> - Al peer appena connesso la lista degli indirizzi IP e dei numeri di porta degli altri
 peer registrati
 
-> o Agli altri peer già attivi l’indirizzo IP ed il numero di porta del nuovo peer.
+> - Agli altri peer già attivi l’indirizzo IP ed il numero di porta del nuovo peer.
 
 > • Disconnessione. Il peer comunica la prossima disattivazione del servizio. Il server invia a
 tutti i peer attivi l’indirizzo IP ed il numero di porta del peer che ha richiesto la
