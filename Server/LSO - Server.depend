@@ -8,3 +8,12 @@
 	<unistd.h>
 	<pthread.h>
 
+1500387576 source:/home/luca/Scrivania/LSO/Server/main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/socket.h>
+	<arpa/inet.h>
+	<unistd.h>
+	<pthread.h>
+

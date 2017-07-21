@@ -1,7 +1,3 @@
-/*
-    C socket server example, handles multiple clients using threads
-*/
-
 #include <stdio.h>
 #include <string.h>    //strlen
 #include <stdlib.h>    //strlen
@@ -13,48 +9,62 @@
 //the thread function
 void *connection_handler(void *);
 
-int main(int argc , char *argv[]){
-    int socket_desc , client_sock , c , *new_sock;
-    struct sockaddr_in server , client;
+int main(int argc, char **argv){
+    int desc_sock, client_sock, c, *new_sock;
+    struct sockaddr_in server, client;
 
-    //Create socket
-    socket_desc = socket(AF_INET , SOCK_STREAM , 0);
-    if (socket_desc == -1)
-    {
-        printf("Could not create socket");
-    }
-    puts("Socket created");
+    // Controlla il numero dei parametri da linea di comando
+	if(argc < 2){
+		write(1, "Parametri non inseriti da linea di comando\n", strlen("\nParametri non inseriti da linea di comando\n"));
+		exit(EXIT_FAILURE);
+	}
 
-    //Prepare the sockaddr_in structure
-    server.sin_family = AF_INET;
-    server.sin_addr.s_addr = INADDR_ANY;
-    server.sin_port = htons( 8888 );
+    // Inizializza comunicazione con protocollo TCP/IP e numero di porta inserito da riga di comando
+	server.sin_family = AF_INET;
+	server.sin_port = htons(atoi(argv[1]));
+	server.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    //Bind
-    if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)
-    {
-        //print the error message
-        perror("bind failed. Error");
-        return 1;
-    }
-    puts("bind done");
+    // Crea socket per le comunicazioni
+	if((desc_sock=socket(AF_INET, SOCK_STREAM, 0)) == -1 ){
+		perror("\nErrore Socket");
+		exit(EXIT_FAILURE);
+	}
 
-    //Listen
-    listen(socket_desc , 3);
+    // Bind
+	if(bind(desc_sock,(struct sockaddr *)&server, sizeof(server)) == -1){
+		perror("\nErrore Bind");
+		exit(EXIT_FAILURE);
+	}
+
+	// Listen
+	if(listen(desc_sock,100000) == -1){
+		perror("\nErrore listen");
+		exit(EXIT_FAILURE);
+	}
+
+	write(1, "Server connesso ed in ascolto...\n", strlen("Server connesso ed in ascolto...\n"));
+
+	c = sizeof(struct sockaddr_in);
+
+	write(1, Request.ServerVariables("LOCAL_ADDR"), 10);
+
+	while(1){
+
+        // Accept
+        client_sock = accept(desc_sock, (struct sockaddr *)&client, (socklen_t*)&c);
+
+	}
 
     //Accept and incoming connection
-    puts("Waiting for incoming connections...");
-    c = sizeof(struct sockaddr_in);
-    while( (client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c)) )
-    {
+    /*c = sizeof(struct sockaddr_in);
+    while( (client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c)) ){
         puts("Connection accepted");
 
         pthread_t sniffer_thread;
         new_sock = malloc(1);
         *new_sock = client_sock;
 
-        if( pthread_create( &sniffer_thread , NULL ,  connection_handler , (void*) new_sock) < 0)
-        {
+        if( pthread_create( &sniffer_thread , NULL ,  connection_handler , (void*) new_sock) < 0){
             perror("could not create thread");
             return 1;
         }
@@ -64,18 +74,17 @@ int main(int argc , char *argv[]){
         puts("Handler assigned");
     }
 
-    if (client_sock < 0)
-    {
+    if (client_sock < 0){
         perror("accept failed");
         return 1;
     }
-
+*/
     return 0;
 }
 
 /*
  * This will handle connection for each client
- * */
+ *
 void *connection_handler(void *socket_desc){
     //Get the socket descriptor
     int sock = *(int*)socket_desc;
@@ -90,19 +99,16 @@ void *connection_handler(void *socket_desc){
     write(sock , message , strlen(message));
 
     //Receive a message from client
-    while( (read_size = recv(sock , client_message , 2000 , 0)) > 0 )
-    {
+    while( (read_size = recv(sock , client_message , 2000 , 0)) > 0 ){
         //Send the message back to client
         write(sock , client_message , strlen(client_message));
     }
 
-    if(read_size == 0)
-    {
+    if(read_size == 0){
         puts("Client disconnected");
         fflush(stdout);
     }
-    else if(read_size == -1)
-    {
+    else if(read_size == -1){
         perror("recv failed");
     }
 
@@ -111,4 +117,4 @@ void *connection_handler(void *socket_desc){
     free(socket_desc);
 
     return 0;
-}
+}*/

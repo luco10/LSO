@@ -1,0 +1,2 @@
+gcc -pthread -o server main.c
+./server 1050
